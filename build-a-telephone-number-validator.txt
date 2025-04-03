@@ -1,0 +1,230 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Telephone Number Validator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        #user-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        #user-input:focus {
+            border-color: #3498db;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        #check-btn, #clear-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        #check-btn {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        #check-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        #clear-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        #clear-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        #results-div {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            text-align: center;
+            word-break: break-all;
+        }
+        
+        .valid {
+            background-color: #e8f5e9 !important;
+            color: #2e7d32 !important;
+            font-weight: bold;
+        }
+        
+        .invalid {
+            background-color: #fdecea !important;
+            color: #c62828 !important;
+            font-weight: bold;
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #7f8c8d;
+            text-align: left;
+        }
+        
+        .examples {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .examples h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .examples ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>US Telephone Number Validator</h1>
+        <input id="user-input" type="text" placeholder="Enter phone number">
+        <div class="button-group">
+            <button id="check-btn">Check</button>
+            <button id="clear-btn">Clear</button>
+        </div>
+        <div id="results-div"></div>
+        
+        <div class="instructions">
+            <p><strong>Instructions:</strong> Enter a US phone number to validate its format. Valid formats include:</p>
+        </div>
+        
+        <div class="examples">
+            <h3>Valid Formats:</h3>
+            <ul>
+                <li>555-555-5555</li>
+                <li>(555)555-5555</li>
+                <li>1 555-555-5555</li>
+                <li>1 (555) 555-5555</li>
+                <li>1(555)555-5555</li>
+                <li>5555555555</li>
+                <li>1 555 555 5555</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInput = document.getElementById('user-input');
+            const checkBtn = document.getElementById('check-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const resultsDiv = document.getElementById('results-div');
+            
+            checkBtn.addEventListener('click', function() {
+                const phoneNumber = userInput.value.trim();
+                
+                // Check if input is empty
+                if (phoneNumber === '') {
+                    alert('Please provide a phone number');
+                    return;
+                }
+                
+                // Validate the phone number
+                const isValid = telephoneCheck(phoneNumber);
+                
+                // Display results
+                if (isValid) {
+                    resultsDiv.textContent = `Valid US number: ${phoneNumber}`;
+                    resultsDiv.className = 'valid';
+                } else {
+                    resultsDiv.textContent = `Invalid US number: ${phoneNumber}`;
+                    resultsDiv.className = 'invalid';
+                }
+            });
+            
+            clearBtn.addEventListener('click', function() {
+                resultsDiv.textContent = '';
+                resultsDiv.className = '';
+            });
+            
+            function telephoneCheck(str) {
+                // Regular expression to match valid US phone number formats
+                const regex = /^(1\s?)?(\(\d{3}\)|\d{3})([\s\-]?)\d{3}([\s\-]?)\d{4}$/;
+                
+                // Test the string against the regex
+                return regex.test(str);
+            }
+        });
+    </script>
+</body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
